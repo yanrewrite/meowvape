@@ -62,6 +62,7 @@ end
 
 local store = {
 	attackReach = 0,
+    lastHit = 0,
 	attackReachUpdate = tick(),
 	damageBlockFail = tick(),
 	hand = {},
