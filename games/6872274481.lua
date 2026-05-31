@@ -982,7 +982,12 @@ run(function()
     getgenv().remotes = remotes
 
 	OldBreak = bedwars.BlockController.isBlockBreakable
+	OldHit = bedwars.BlockBreaker.hitBlock
 
+	bedwars.BlockBreaker.hitBlock = function(...)
+        store.lastHit = tick()
+        return OldHit(...)
+    end
 	Client.Get = function(self, remoteName)
 		local call = OldGet(self, remoteName)
 
