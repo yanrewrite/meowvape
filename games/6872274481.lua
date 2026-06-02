@@ -3683,7 +3683,7 @@ run(function()
     
         if Attackable.Enabled then
             if not entitylib.isAlive then return false end
-            if lplr.Character:GetAttribute('StunnedUntilTime') > workspace:GetServerTimeNow() then return false end
+            if (lplr.Character:GetAttribute('StunnedUntilTime') or 0) > workspace:GetServerTimeNow() then return false end
             if lplr.Character:FindFirstChild('elk') then return false end
             for _, v in bedwars.StatusEffectUtil:getAllActive(lplr.Character) do
                 if v.statusEffect == 'frozen' then
