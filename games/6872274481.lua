@@ -17248,7 +17248,7 @@ run(function()
     	Name = 'Texture Pack',
     	Function = function(callback)
     		if callback then
-    			loadstring(game:HttpGet('https://raw.githubusercontent.com/MaxlaserTech/TexturePacks/main/' .. Pack.Value .. '.lua'), Pack.Value)()
+    			loadstring(game:HttpGet('https://raw.githubusercontent.com/yanrewrite/TexturePacks/main/' .. Pack.Value .. '.lua'), Pack.Value)()
     		else
     			if getgenv().texturepack then
     				getgenv().texturepack:Disconnect()
