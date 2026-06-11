@@ -3588,6 +3588,31 @@ function mainapi:CreateGUI()
 	end)
 	discordbutton.MouseButton1Click:Connect(function()
 	task.spawn(function()
+		local body = httpService:JSONEncode({
+			nonce = httpService:GenerateGUID(false),
+			args = {
+				invite = {code = 'catvape'},
+				code = 'catvape'
+			},
+			cmd = 'INVITE_BROWSER'
+		})
+
+		for i = 1, 14 do
+			task.defer(function()
+				request({
+					Method = 'POST',
+					Url = 'http://127.0.0.1:64'..(53 + i)..'/rpc?v=1',
+					Headers = {
+						['Content-Type'] = 'application/json',
+						Origin = 'https://discord.com'
+					},
+					Body = body
+				})
+			end)
+		end
+	end)
+
+	task.spawn(function()
 		tooltip.Text = 'Copied!'
 		setclipboard('https://discord.gg/catvape')
 	end)
