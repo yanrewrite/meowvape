@@ -4047,7 +4047,7 @@ run(function()
                             local selfpos = entitylib.character.RootPart.Position
                             local localfacing = entitylib.character.RootPart.CFrame.LookVector * Vector3.new(1, 0, 1)
                             if tick() > switchCooldown and Mode.Value == 'Switch' then
-    							switchCooldown = tick() + 0.7
+    							switchCooldown = tick() + 0.5
     							targetIndex += 1
     						end
                             if not plrs[targetIndex] then
@@ -4088,14 +4088,14 @@ run(function()
     
                                 local actualRoot = v.Character.PrimaryPart
                                 if actualRoot and (not Sync.Enabled or (tick() - swingCooldown >= SwingTime.Value)) and (v.Humanoid.FloorMaterial ~= Enum.Material.Air or math.random(1, 100) < AirChance.Value) then
-                                    if UpdateRate.Value >= 240 or (tick() - lastHit) >= (1 / UpdateRate.Value) then
+                                    if UpdateRate.Value >= 240 or (tick() - lastHit) >= (2 / UpdateRate.Value) then
                                         lastHit = tick()
     
                                         local dir = CFrame.lookAt(selfpos, actualRoot.Position).LookVector
                                         local pos = selfpos + dir * math.max(delta.Magnitude - 14.4, 0)
                                         bedwars.SwordController.lastAttack = workspace:GetServerTimeNow()
                                         store.attackReach = (delta.Magnitude * 100) // 1 / 100
-                                        store.attackReachUpdate = tick() + 1
+                                        store.attackReachUpdate = tick() + 2
                                         swingCooldown = tick()
     
                                         AttackRemote:FireServer({
